@@ -1,0 +1,159 @@
+/* Basic Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Navbar */
+header {
+  background-color: #2f4f4f;
+  color: white;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header nav a {
+  margin-left: 20px;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+header nav a:hover {
+  text-decoration: underline;
+}
+
+/* Main Section */
+main {
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.upload-section {
+  background: #f0f0f0;
+  padding: 30px;
+  border-radius: 12px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.upload-section input,
+.upload-section button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  font-size: 1rem;
+}
+
+#classifyBtn {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+#classifyBtn:hover {
+  background-color: #218838;
+  transform: scale(1.05);
+  transition: all 0.3s ease;
+}
+
+
+.result-section {
+  padding: 20px;
+}
+
+#outputBox {
+  margin-top: 15px;
+  padding: 20px;
+  background: #fff3cd;
+  border: 1px solid #ffeeba;
+  border-radius: 8px;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  background-color: #2f4f4f;
+  color: white;
+  padding: 15px;
+  margin-top: 40px;
+}
+.learn-page {
+  padding: 40px 20px;
+  max-width: 900px;
+  margin: auto;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+}
+
+.learn-page h2 {
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+.learn-page p {
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
+
+.topic {
+  background-color: #ffffff;
+  padding: 25px;
+  margin-bottom: 30px;
+  border-left: 6px solid #4caf50;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.topic ul {
+  padding-left: 20px;
+  margin-top: 10px;
+}
+
+.topic li {
+  margin-bottom: 10px;
+  font-size: 1.05rem;
+}
+.topic ul li::marker {
+  color: #4caf50; /* Stylish green dot */
+  font-size: 1.2rem;
+}
+.topic ul {
+  list-style-position: inside;  /* <-- This ensures bullets appear directly before the text */
+  padding-left: 0;
+  margin-left: 0;
+}
+
+.topic ul li {
+  margin-bottom: 10px;
+  text-align: left;
+  line-height: 1.6;
+}
+.about-section {
+  padding: 2rem;
+  max-width: 800px;
+  margin: auto;
+  font-family: Arial, sans-serif;
+}
+.about-section {
+  margin: 2rem;
+  max-width: 1000px;
+  padding: 1.5rem;
+  text-align: left;
+}
+
+.about-section h2, .about-section h3 {
+  color: #2e7d32;
+}
+
+.team-list {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+}
+
