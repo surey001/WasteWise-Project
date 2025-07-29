@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>WasteWise - Smart Waste Classifier</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    .upload-section {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 30px;
+      background-color: #f2f2f2;
+      padding: 40px;
+      border-radius: 15px;
+      margin: 40px auto;
+      max-width: 900px;
+    }
+
+    .gif-container img {
+      width: 200px;
+      height: auto;
+    }
+
+    .text-container {
+      text-align: center;
+    }
+
+    .text-container h2 {
+      margin-bottom: 10px;
+    }
+
+    #classifyBtn {
+      margin-top: 10px;
+      background-color: #28a745;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header>
+    <h1>♻️ WasteWise</h1>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Classify</a>
+      <a href="learn.html">Learn</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
+
+  <!-- Main Section -->
+  <main>
+    <section class="upload-section">
+      <!-- GIF Section -->
+      <div class="gif-container">
+        <img src="https://i.ibb.co/BHVyM882/18185806.gif" alt="Waste Cycle Animation" />
+      </div>
+
+      <!-- Text & Upload Section -->
+      <div class="text-container">
+        <h2>Show Your Waste</h2>
+        <p>Select or capture a photo to find out how to dispose it!</p>
+        <input type="file" id="imageInput" accept="image/*" />
+        <br />
+        <img id="previewImage" style="display:none; max-width: 200px; margin-top: 10px; border-radius: 10px;" />
+
+        <button id="classifyBtn">Classify Waste</button>
+      </div>
+
+      <div id="loaderContainer" style="display:none; margin-top: 20px; text-align: center;">
+  <img id="loadingGif" src="https://i.gifer.com/BuZv.gif" alt="Processing..." width="80">
+  <p style="font-weight: bold; color: #555;">Processing...</p>
+</div>
+
+<div id="successContainer" style="display:none; margin-top: 20px; text-align: center;">
+  <img src="https://i.gifer.com/7efs.gif" alt="Success" width="80">
+  <p style="font-weight: bold; color: green;">Classified Successfully!</p>
+</div>
+
+    </section>
+
+
+
+    <section class="result-section" id="resultSection">
+      <h3>Classification Result</h3>
+      <div id="outputBox">
+        <p>No image uploaded yet.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 WasteWise | Built for a cleaner future</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
