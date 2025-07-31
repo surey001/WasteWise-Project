@@ -35,6 +35,7 @@
       justify-content: center;
       gap: 10px;
     }
+    
 
     .hero-container {
       text-align: center;
@@ -239,10 +240,12 @@
 <body>
 
   <!-- Header -->
-  <header>
-    <h1>♻️ Waste Wise</h1>
-  </header>
-
+<header>
+  <h1>♻️ Waste Wise</h1>
+  <button id="lang-toggle" style="position:absolute; right:20px; top:10px; padding:0px 5px; border:none; border-radius:4px; cursor:pointer;">
+    தமிழ்
+  </button>
+</header>
   <!-- Hero -->
   <div class="hero-container">
     <h1>
@@ -374,9 +377,97 @@
     function startClassifying() {
       document.getElementById('upload-section').scrollIntoView({ behavior: 'smooth' });
     }
+
+    <!-- Just paste this over your current <script> at the bottom of your code -->
+
+  const langBtn = document.getElementById('lang-toggle');
+  let isTamil = false;
+
+  langBtn.addEventListener('click', () => {
+    isTamil = !isTamil;
+    langBtn.innerText = isTamil ? 'English' : 'தமிழ்';
+
+    // Hero section
+    document.querySelector('.hero-container h1').innerHTML = isTamil
+      ? 'ஸ்மார்ட் <span>AI இயங்கும் </span> <span>கழிவு வகைப்பாடு</span>'
+      : 'Smart <span>AI-Powered</span> <span>Waste Classification</span>';
+
+    document.querySelector('.hero-container p').innerText = isTamil
+      ? 'எந்தவொரு கழிவுப்பொருளையும் பதிவேற்றவும், எங்கள் AI அதை எளிதில் வகைப்படுத்தும். சுற்றுச்சூழலைப் பாதுகாக்க உதவுங்கள்! 🌍'
+      : 'Upload any waste item and let our AI instantly identify the correct disposal method. Help save the environment, one classification at a time! 🌍';
+
+    document.querySelector('.hero-container button').innerText = isTamil
+      ? 'வகைப்படுத்தத் தொடங்கு ⬇'
+      : 'Start Classifying ⬇';
+
+    // Upload section
+    document.querySelector('#upload-section h2').innerText = isTamil
+      ? 'உங்கள் குப்பையை பதிவேற்றவும்'
+      : 'Upload Your Waste Item';
+
+    document.querySelector('#upload-section p').innerText = isTamil
+      ? 'எந்த குப்பையும் புகைப்படமாக எடுத்து அல்லது படத்தை பதிவேற்றவும் AI உடனடியாக வகைப்படுத்தும்'
+      : 'Take a photo or upload an image of any waste item for instant AI classification';
+
+    document.querySelector('.upload-box p').innerHTML = isTamil
+      ? 'உங்கள் படத்தை இங்கே உள்ளிடுக <br>அல்லது உங்கள் கோப்புகளை தேட கிளிக் செய்யவும்'
+      : 'Drag & drop your image here<br>or click to browse your files';
+
+    document.querySelector('.choose-btn').innerText = isTamil
+      ? 'கோப்பை தேர்வு செய்யவும்'
+      : 'Choose File';
+
+    document.querySelector('.take-btn').innerText = isTamil
+      ? 'புகைப்படம் எடுக்கவும்'
+      : 'Take Photo';
+
+    document.querySelector('.upload-box p:last-child').innerText = isTamil
+      ? 'JPEG, PNG • அதிகபட்சம் 10MB'
+      : 'Supports JPEG, PNG • Max 10MB';
+
+    // Waste Category Guide
+    document.querySelector('.waste-guide h2').innerText = isTamil
+      ? 'குப்பை வகை வழிகாட்டி'
+      : 'Waste Category Guide';
+
+    document.querySelector('.waste-guide p').innerText = isTamil
+      ? 'வித்யாசமான குப்பை வகைகளைப் பற்றி அறிந்து, ஒவ்வொரு நேரமான வெளியீட்டிலும் நம் பூமியை சுத்தமாக வைத்திருங்கள்'
+      : 'Learn about different waste categories and help make our planet cleaner, one disposal at a time';
+
+    const cards = document.querySelectorAll('.waste-card');
+    if (isTamil) {
+      cards[0].querySelector('h3').innerText = 'கொதிக்கூடிய';
+      cards[0].querySelector('p').innerText = 'இயற்கையாக அழுகக்கூடிய பொருட்கள்';
+      cards[0].querySelectorAll('ul li')[0].innerText = 'உணவு கழிவுகள்';
+      cards[0].querySelectorAll('ul li')[1].innerText = 'தோட்டம் கழிவுகள்';
+      cards[0].querySelectorAll('ul li')[2].innerText = 'காகிதத் துடைப்பிகள்';
+
+      cards[1].querySelector('h3').innerText = 'மறுசுழற்சி செய்யக்கூடியவை';
+      cards[1].querySelector('p').innerText = 'புதிய தயாரிப்புகளாக மாற்றக்கூடிய பொருட்கள்';
+      cards[1].querySelectorAll('ul li')[0].innerText = 'பிளாஸ்டிக் பாட்டில்கள்';
+      cards[1].querySelectorAll('ul li')[1].innerText = 'கண்ணாடி பாட்டில்கள்';
+      cards[1].querySelectorAll('ul li')[2].innerText = 'அலுமினியக் கேன்கள்';
+
+      cards[2].querySelector('h3').innerText = 'ஆபத்தானவை';
+      cards[2].querySelector('p').innerText = 'பாதுகாப்பான கையாளுதல் தேவைப்படும் பொருட்கள்';
+      cards[2].querySelectorAll('ul li')[0].innerText = 'மின்கலன்கள்';
+      cards[2].querySelectorAll('ul li')[1].innerText = 'மின்னணு சாதனங்கள்';
+      cards[2].querySelectorAll('ul li')[2].innerText = 'ரசாயனங்கள்';
+
+      cards[3].querySelector('h3').innerText = 'பொது கழிவுகள்';
+      cards[3].querySelector('p').innerText = 'பொதுவாக தூக்கப்படும் பொருட்கள்';
+      cards[3].querySelectorAll('ul li')[0].innerText = 'சுகாதார கழிவுகள்';
+      cards[3].querySelectorAll('ul li')[1].innerText = 'பிளாஸ்டிக் மடிப்புகள்';
+      cards[3].querySelectorAll('ul li')[2].innerText = 'அழுக்கான பொருட்கள்';
+    } else {
+      location.reload(); // reloads to restore original English content
+    }
+  });
+
   </script>
 </body>
 </html>
+
 
 
 
