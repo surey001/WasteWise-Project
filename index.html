@@ -3,471 +3,113 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Smart AI-Powered Waste Classification</title>
+  <title>Waste Wise - Features</title>
   <style>
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
 
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(to bottom right, #ffffff, #e6ffe6);
-      color: #222;
-      min-height: 100vh;
-      padding: 0;
+    body, html {
+      height: 100%;
+      font-family: Arial, sans-serif;
+      color: white;
     }
 
-    /* Header */
+    /* Video background */
+    .bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1; /* send video behind content */
+    }
+
     header {
-      background-color: #1f4f2e;
-      padding: 20px 0;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    header h1 {
-      color: white;
-      font-size: 2rem;
-      font-weight: bold;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-    }
-    
-
-    .hero-container {
-      text-align: center;
-      max-width: 700px;
-      margin: 0 auto;
+      background: rgba(31, 79, 46, 0.8); /* semi-transparent */
       padding: 20px;
-      animation: fadeIn 1.5s ease;
-    }
-
-    h1 span {
-      color: #2dbb6c;
-    }
-
-    p {
-      margin-top: 1rem;
-      font-size: 1.1rem;
-      color: #555;
-      line-height: 1.6;
-    }
-
-    button {
-      margin-top: 2rem;
-      padding: 12px 24px;
-      font-size: 1rem;
-      background-color: #2dbb6c;
-      color: white;
-      border: none;
-      border-radius: 30px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-
-    button:hover {
-      background-color: #24995a;
-    }
-
-    @keyframes fadeIn {
-      0% {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* Stats Wrapper */
-    .stats-wrapper {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 30px;
-      flex-wrap: wrap;
-      margin-top: 60px;
-      padding: 40px 20px;
-      background: linear-gradient(to right, #f5faf7, #f8fcfa);
-    }
-
-    .stats-wrapper img {
-      max-width: 120px;
-      border-radius: 12px;
-    }
-
-    /* Stats Section */
-    .stats-section {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 40px;
-      flex-wrap: wrap;
-    }
-
-    .stat-card {
-      background: white;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-      border-radius: 20px;
-      padding: 30px 50px;
+      font-size: 1.8rem;
+      font-weight: bold;
       text-align: center;
-      transition: transform 0.3s ease;
     }
 
-    .stat-card:hover {
+    .features {
+    display: grid;
+    grid-template-columns: repeat(2, auto); /* 2 columns */
+    justify-content: center; /* center align */
+    gap: 40px; /* spacing between cards */
+    padding: 60px 20px;
+}
+
+    .feature-card {
+      background: rgba(255, 255, 255, 0.85);
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      padding: 30px;
+      width: 220px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      color: #1f4f2e;
+      text-align: center;
+    }
+
+    .feature-card:hover {
       transform: translateY(-5px);
     }
 
-    .stat-card h2 {
-      font-size: 2rem;
-      color: #2e7d32;
-      margin-bottom: 10px;
-    }
-
-    .stat-card p {
-      color: #555;
-      font-size: 1rem;
-    }
-
-    /* Upload Section */
-    .upload-section {
-      margin-top: 60px;
-      text-align: center;
-    }
-
-    .upload-box {
-      max-width: 600px;
-      margin: 0 auto;
-      padding: 40px;
-      border: 2px dashed #2dbb6c;
-      border-radius: 20px;
-      background-color: #fff;
-    }
-
-    .upload-box p {
-      font-size: 1.1rem;
-      color: #444;
-      margin-bottom: 20px;
-    }
-
-    .upload-box input[type="file"],
-    .upload-box button {
-      margin: 10px;
-    }
-
-    .choose-btn,
-    .take-btn {
-      padding: 12px 20px;
-      border: none;
-      border-radius: 10px;
-      font-size: 1rem;
-      cursor: pointer;
-    }
-
-    .choose-btn {
-      background-color: #2dbb6c;
-      color: white;
-    }
-
-    .take-btn {
-      background-color: #e0f7ec;
-      color: #2dbb6c;
-      border: 1px solid #2dbb6c;
-    }
-
-    /* Waste Guide Animation */
-    .waste-card {
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      cursor: pointer;
-    }
-
-    .waste-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
-    }
-
-    @media (hover: none) {
-      .waste-card:hover {
-        transform: none;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-      }
-
-      .waste-card:active {
-        transform: scale(0.98);
-        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
-      }
-    }
-
-    /* Footer */
-    footer {
-      background-color: #1f4f2e;
-      padding: 20px 0;
-      text-align: center;
-      margin-top: 80px;
-      border-top: 1px solid #ddd;
-    }
-
-    footer p {
-      color: white;
-      font-size: 0.95rem;
-    }
-
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 1.8rem;
-      }
-
-      p {
-        font-size: 1rem;
-      }
-
-      .stats-wrapper {
-        flex-direction: column;
-        gap: 20px;
-      }
-
-      .stats-section {
-        flex-direction: column;
-        gap: 20px;
-      }
+    .feature-card h3 {
+      margin-top: 10px;
+      color: #1f4f2e;
     }
   </style>
 </head>
 <body>
+  <!-- Background video -->
+  <video autoplay muted loop playsinline class="bg-video">
+    <source src="videos/project_video.mp4" type="video/mp4">
+    <!-- fallback -->
+    Your browser does not support HTML5 video.
+  </video>
 
-  <!-- Header -->
-<header>
-  <h1>♻️ Waste Wise</h1>
-  <button id="lang-toggle" style="position:absolute; right:20px; top:10px; padding:0px 5px; border:none; border-radius:4px; cursor:pointer;">
-    தமிழ்
-  </button>
-</header>
-  <!-- Hero -->
-  <div class="hero-container">
-    <h1>
-      Smart <span>AI-Powered</span> <span>Waste Classification</span>
-    </h1>
-    <p>
-      Upload any waste item and let our AI instantly identify the correct disposal method.
-      Help save the environment, one classification at a time! 🌍
-    </p>
-    <button onclick="startClassifying()">Start Classifying ⬇</button>
+  <header>♻️ Waste Wise - Features</header>
+
+  <div class="features">
+    <!-- Classification -->
+    <div class="feature-card" onclick="location.href='classification.html'">
+      <div style="font-size:2rem;">🤖</div>
+      <h3>AI Waste Classification</h3>
+      <p>Upload waste items and let AI classify them instantly.</p>
+    </div>
+
+    <!-- Waste Category Guide -->
+    <div class="feature-card" onclick="location.href='learn.html'">
+      <div style="font-size:2rem;">📘</div>
+      <h3>Waste Category Guide</h3>
+      <p>Learn about compost, recycling, hazardous & general waste.</p>
+    </div>
+
+    <!-- Recycling Tips -->
+    <div class="feature-card" onclick="location.href='Recycling_Tips.html'">
+      <div style="font-size:2rem;">💡</div>
+      <h3>Recycling Tips</h3>
+      <p>Get tips & best practices for effective waste management.</p>
+    </div>
+
+    <!-- Impact Stats -->
+    <div class="feature-card" onclick="location.href='stats.html'">
+      <div style="font-size:2rem;">📊</div>
+      <h3>Impact Stats</h3>
+      <p>See how AI waste classification makes a difference.</p>
+    </div>
   </div>
 
-  <div class="stats-wrapper" style="display: flex; align-items: center; justify-content: space-between; padding: 20px 40px;">
-  
-  <!-- Green bin image (left) -->
-  <a href="https://imgbb.com/">
-    <img src="https://i.ibb.co/JR23fBQN/green.jpg" alt="green" border="0" style="height: 100px;">
-  </a>
 
-  <!-- Stats Section (center) -->
-  <section class="stats-section" style="display: flex; gap: 40px; justify-content: center;">
-    <div class="stat-card" style="background: white; padding: 24px 32px; border-radius: 16px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
-      <h2 style="font-size: 1.8rem; color: green;">95%+</h2>
-      <p>Accuracy Rate</p>
-    </div>
-    <div class="stat-card" style="background: white; padding: 24px 32px; border-radius: 16px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
-      <h2 style="font-size: 1.8rem; color: green;">50k+</h2>
-      <p>Items Classified</p>
-    </div>
-    <div class="stat-card" style="background: white; padding: 24px 32px; border-radius: 16px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
-      <h2 style="font-size: 1.8rem; color: green;">4</h2>
-      <p>Waste Categories</p>
-    </div>
-  </section>
 
-  <!-- Yellow bin image (right) -->
-  <a href="https://imgbb.com/">
-    <img src="https://i.ibb.co/5WwjJFfL/yellow-removebg-preview.png" alt="yellow bin" border="0" style="height: 100px;">
-  </a>
-</div>
-  <!-- Upload -->
-  <section id="upload-section" class="upload-section">
-    <h2>Upload Your Waste Item</h2>
-    <p>Take a photo or upload an image of any waste item for instant AI classification</p>
-    <div class="upload-box">
-      <p>Drag & drop your image here<br>or click to browse your files</p>
-      <input type="file" id="fileInput" accept="image/png, image/jpeg" />
-      <br>
-      <button class="choose-btn">Choose File</button>
-      <button class="take-btn">Take Photo</button>
-      <p style="font-size: 0.9rem; color: #666; margin-top: 10px;">Supports JPEG, PNG • Max 10MB</p>
-    </div>
-  </section>
 
-    <!-- Waste Guide -->
-  <section class="waste-guide" style="margin-top: 80px;">
-    <div style="max-width: 1200px; margin: 0 auto; padding: 20px;">
-      <h2 style="text-align: center; font-size: 2rem; font-weight: bold; color: #1f4f2e; margin-bottom: 10px;">
-        Waste Category Guide
-      </h2>
-      <p style="text-align: center; color: #555; margin-bottom: 40px;">
-        Learn about different waste categories and help make our planet cleaner, one disposal at a time
-      </p>
-      <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
-        <!-- Cards are already included in your original code -->
-        <!-- Compost -->
-        <div class="waste-card" style="flex: 1 1 250px; background: white; border-radius: 16px; padding: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
-          <div style="font-size: 2rem; margin-bottom: 10px;">🍃</div>
-          <h3 style="font-size: 1.2rem; font-weight: bold; margin-bottom: 8px;">Compost</h3>
-          <p style="color: #444;">Organic materials that can decompose naturally</p>
-          <p style="font-weight: 600; margin-top: 10px;">Examples:</p>
-          <ul style="color: #555; padding-left: 20px; margin-top: 5px;">
-            <li>Food scraps</li>
-            <li>Yard waste</li>
-            <li>Paper towels</li>
-          </ul>
-        </div>
-
-        <!-- Recyclable -->
-        <div class="waste-card" style="flex: 1 1 250px; background: white; border-radius: 16px; padding: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
-          <div style="font-size: 2rem; margin-bottom: 10px;">♻️</div>
-          <h3 style="font-size: 1.2rem; font-weight: bold; margin-bottom: 8px;">Recyclable</h3>
-          <p style="color: #444;">Materials that can be processed into new products</p>
-          <p style="font-weight: 600; margin-top: 10px;">Examples:</p>
-          <ul style="color: #555; padding-left: 20px; margin-top: 5px;">
-            <li>Plastic bottles</li>
-            <li>Glass jars</li>
-            <li>Aluminum cans</li>
-          </ul>
-        </div>
-
-        <!-- Hazardous -->
-        <div class="waste-card" style="flex: 1 1 250px; background: white; border-radius: 16px; padding: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
-          <div style="font-size: 2rem; margin-bottom: 10px;">⚠️</div>
-          <h3 style="font-size: 1.2rem; font-weight: bold; margin-bottom: 8px;">Hazardous</h3>
-          <p style="color: #444;">Dangerous materials requiring special disposal</p>
-          <p style="font-weight: 600; margin-top: 10px;">Examples:</p>
-          <ul style="color: #555; padding-left: 20px; margin-top: 5px;">
-            <li>Batteries</li>
-            <li>Electronics</li>
-            <li>Chemicals</li>
-          </ul>
-        </div>
-
-        <!-- General -->
-        <div class="waste-card" style="flex: 1 1 250px; background: white; border-radius: 16px; padding: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
-          <div style="font-size: 2rem; margin-bottom: 10px;">🗑️</div>
-          <h3 style="font-size: 1.2rem; font-weight: bold; margin-bottom: 8px;">General</h3>
-          <p style="color: #444;">Items that go to regular waste disposal</p>
-          <p style="font-weight: 600; margin-top: 10px;">Examples:</p>
-          <ul style="color: #555; padding-left: 20px; margin-top: 5px;">
-            <li>Sanitary waste</li>
-            <li>Plastic wrappers</li>
-            <li>Contaminated items</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Waste Guide -->
-  <!-- (same as your code, unchanged) -->
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 Waste Wise. All rights reserved.</p>
-  </footer>
-
-  <script>
-    function startClassifying() {
-      document.getElementById('upload-section').scrollIntoView({ behavior: 'smooth' });
-    }
-
-    <!-- Just paste this over your current <script> at the bottom of your code -->
-
-  const langBtn = document.getElementById('lang-toggle');
-  let isTamil = false;
-
-  langBtn.addEventListener('click', () => {
-    isTamil = !isTamil;
-    langBtn.innerText = isTamil ? 'English' : 'தமிழ்';
-
-    // Hero section
-    document.querySelector('.hero-container h1').innerHTML = isTamil
-      ? 'ஸ்மார்ட் <span>AI இயங்கும் </span> <span>கழிவு வகைப்பாடு</span>'
-      : 'Smart <span>AI-Powered</span> <span>Waste Classification</span>';
-
-    document.querySelector('.hero-container p').innerText = isTamil
-      ? 'எந்தவொரு கழிவுப்பொருளையும் பதிவேற்றவும், எங்கள் AI அதை எளிதில் வகைப்படுத்தும். சுற்றுச்சூழலைப் பாதுகாக்க உதவுங்கள்! 🌍'
-      : 'Upload any waste item and let our AI instantly identify the correct disposal method. Help save the environment, one classification at a time! 🌍';
-
-    document.querySelector('.hero-container button').innerText = isTamil
-      ? 'வகைப்படுத்தத் தொடங்கு ⬇'
-      : 'Start Classifying ⬇';
-
-    // Upload section
-    document.querySelector('#upload-section h2').innerText = isTamil
-      ? 'உங்கள் குப்பையை பதிவேற்றவும்'
-      : 'Upload Your Waste Item';
-
-    document.querySelector('#upload-section p').innerText = isTamil
-      ? 'எந்த குப்பையும் புகைப்படமாக எடுத்து அல்லது படத்தை பதிவேற்றவும் AI உடனடியாக வகைப்படுத்தும்'
-      : 'Take a photo or upload an image of any waste item for instant AI classification';
-
-    document.querySelector('.upload-box p').innerHTML = isTamil
-      ? 'உங்கள் படத்தை இங்கே உள்ளிடுக <br>அல்லது உங்கள் கோப்புகளை தேட கிளிக் செய்யவும்'
-      : 'Drag & drop your image here<br>or click to browse your files';
-
-    document.querySelector('.choose-btn').innerText = isTamil
-      ? 'கோப்பை தேர்வு செய்யவும்'
-      : 'Choose File';
-
-    document.querySelector('.take-btn').innerText = isTamil
-      ? 'புகைப்படம் எடுக்கவும்'
-      : 'Take Photo';
-
-    document.querySelector('.upload-box p:last-child').innerText = isTamil
-      ? 'JPEG, PNG • அதிகபட்சம் 10MB'
-      : 'Supports JPEG, PNG • Max 10MB';
-
-    // Waste Category Guide
-    document.querySelector('.waste-guide h2').innerText = isTamil
-      ? 'குப்பை வகை வழிகாட்டி'
-      : 'Waste Category Guide';
-
-    document.querySelector('.waste-guide p').innerText = isTamil
-      ? 'வித்யாசமான குப்பை வகைகளைப் பற்றி அறிந்து, ஒவ்வொரு நேரமான வெளியீட்டிலும் நம் பூமியை சுத்தமாக வைத்திருங்கள்'
-      : 'Learn about different waste categories and help make our planet cleaner, one disposal at a time';
-
-    const cards = document.querySelectorAll('.waste-card');
-    if (isTamil) {
-      cards[0].querySelector('h3').innerText = 'கொதிக்கூடிய';
-      cards[0].querySelector('p').innerText = 'இயற்கையாக அழுகக்கூடிய பொருட்கள்';
-      cards[0].querySelectorAll('ul li')[0].innerText = 'உணவு கழிவுகள்';
-      cards[0].querySelectorAll('ul li')[1].innerText = 'தோட்டம் கழிவுகள்';
-      cards[0].querySelectorAll('ul li')[2].innerText = 'காகிதத் துடைப்பிகள்';
-
-      cards[1].querySelector('h3').innerText = 'மறுசுழற்சி செய்யக்கூடியவை';
-      cards[1].querySelector('p').innerText = 'புதிய தயாரிப்புகளாக மாற்றக்கூடிய பொருட்கள்';
-      cards[1].querySelectorAll('ul li')[0].innerText = 'பிளாஸ்டிக் பாட்டில்கள்';
-      cards[1].querySelectorAll('ul li')[1].innerText = 'கண்ணாடி பாட்டில்கள்';
-      cards[1].querySelectorAll('ul li')[2].innerText = 'அலுமினியக் கேன்கள்';
-
-      cards[2].querySelector('h3').innerText = 'ஆபத்தானவை';
-      cards[2].querySelector('p').innerText = 'பாதுகாப்பான கையாளுதல் தேவைப்படும் பொருட்கள்';
-      cards[2].querySelectorAll('ul li')[0].innerText = 'மின்கலன்கள்';
-      cards[2].querySelectorAll('ul li')[1].innerText = 'மின்னணு சாதனங்கள்';
-      cards[2].querySelectorAll('ul li')[2].innerText = 'ரசாயனங்கள்';
-
-      cards[3].querySelector('h3').innerText = 'பொது கழிவுகள்';
-      cards[3].querySelector('p').innerText = 'பொதுவாக தூக்கப்படும் பொருட்கள்';
-      cards[3].querySelectorAll('ul li')[0].innerText = 'சுகாதார கழிவுகள்';
-      cards[3].querySelectorAll('ul li')[1].innerText = 'பிளாஸ்டிக் மடிப்புகள்';
-      cards[3].querySelectorAll('ul li')[2].innerText = 'அழுக்கான பொருட்கள்';
-    } else {
-      location.reload(); // reloads to restore original English content
-    }
-  });
-
-  </script>
 </body>
 </html>
-
-
 
 
